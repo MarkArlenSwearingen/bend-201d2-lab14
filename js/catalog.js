@@ -62,6 +62,7 @@ function handleSubmit(event){
   // cart.items =[event.target.items.value, event.target.quantity.value];
   cart.items.push(item);
   console.log(cart);
+  document.getElementById('catalog').reset();
   // console.log(event.target.items.value);
   // console.log(event.target.quantity.value);
 
