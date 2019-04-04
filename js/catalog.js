@@ -4,7 +4,6 @@
 
 // Set up an empty cart for use on this page.
 var cart = new Cart([]);
-// Hello
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
@@ -26,8 +25,7 @@ function populateForm() {
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
-
-  // TODO: Prevent the page from reloading
+  event.preventDefault();
 
   // Do all the things ...
   addSelectedItemToCart();
@@ -57,6 +55,18 @@ function updateCartPreview() {
 // This is the trigger for the app. When a user "submits" the form, it will
 // Call that handleSubmit method above and kick off the whole process
 var catalogForm = document.getElementById('catalog');
+
+function handleSubmit(event){
+  event.preventDefault();
+  var item = [event.target.items.value, event.target.quantity.value];
+  // cart.items =[event.target.items.value, event.target.quantity.value];
+  cart.items.push(item);
+  console.log(cart);
+  // console.log(event.target.items.value);
+  // console.log(event.target.quantity.value);
+
+}
+
 catalogForm.addEventListener('submit', handleSubmit);
 
 // Before anything else of value can happen, we need to fill in the select
